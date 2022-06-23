@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <!--<link rel="stylesheet" href="{{ url_for('static', filename='_css/index.css') }}" />-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='_css/aboutProject.css') }}" />
+
+  <title>Câncer de Mama Brasil</title>
+
+</head>
+
+<body style="background-color: white;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">HOME</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:8501" target="_blank">APLICATIVO</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/aboutProject">SOBRE</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" target="_blank" href="http://cancermamabrasil.com.br/">PESQUISA NACIONAL</a>
+          </li>
+          <!--<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              GRÁFICOS
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" data-toggle="modal" data-target="#myModal">Abrir Gráfico 1</a></li>
+              <li><a class="dropdown-item" data-toggle="modal" data-target="#myModal2">Abrir Gráfico 2</a></li>
+            </ul>
+          </li>-->
+        </ul>
+        <span class="navbar-text"> Câncer de Mama Brasil </span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid" style="display: flex;
+  flex-direction: column;
+  padding: 1%;
+  align-items: center;
+  justify-content: center;
+  background: rgb(156, 0, 104);
+  color: rgb(236, 183, 49);">
+    <h1 class="display-4" style="text-align: center; color: white; margin-top: 4%;">SOBRE O PROJETO</h1><br>
+    <p class="h2" style="color: white; text-align: center; margin-top: 1%;">"Impacto do rastreamento mamográfico na
+      detecção precoce do câncer de mama no Brasil"</p><br><br>
+
+    <p class="lead" style="text-align: justify; font-weight: bold; width: 90%;">	O câncer de mama representa a neoplasia maligna 
+      que mais afeta a população feminina  em todo o mundo. Sua detecção precoce consiste na realização de mamografias em uma 
+      população sem sinais e sintomas sugestivos de câncer de mama, com o objetivo de identificar alterações sugestivas de câncer.
+      Assim, entender como a cobertura mamográfica e os aspectos socioeconômicos e demográficos influenciam as taxas 
+      de detecção precoce é fundamental para o planejamento da atenção primária à mulher. O presente trabalho tem como objetivo 
+      analisar como essas relações podem impactar na detecção precoce do câncer de mama na população feminina no Brasil.
+      As informações apresentadas foram retiradas dos seguintes bancos de dados populacionais publicamente disponíveis: DATASUS, IBGE, FOSP e INCA.
+    </p><br>
+
+    <div class="container-fluid" style="display: flex;
+    flex-direction: column;
+    padding: 1%;
+    align-items: center;
+    width: auto;
+    justify-content: center;
+    background: rgb(156, 0, 104);">
+      <p>
+        <button class="btn btn-light btn-lg" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse"
+          aria-expanded="false" aria-controls="CollapseObjective1 CollapseObjective2 CollapseMethods">OBJETIVOS &
+          METODOLOGIA</button>
+      </p>
+      <div class="row">
+        <div class="col">
+          <div class="collapse multi-collapse" id="CollapseObjective1">
+            <div class="card-body" style="color: white; text-align: justify;">
+              <b>OBJETIVO GERAL</b>
+              <p class="lead"><br> Analisar o impacto da cobertura do rastreamento mamográfico e a taxa de
+                detecção
+                precoce do câncer de mama na população brasileira</p>
+            </div>
+            <div class="collapse multi-collapse" id="CollapseObjective2">
+              <div class="card-body" style="color: white; text-align: justify;">
+                <b>OBJETIVOS ESPECÍFICOS</b>
+                <p class="lead" style="text-align: justify;"><br>- Analisar a prevalência de CDIS e câncer de mama
+                  invasivo estágio
+                  clínico (EC) I
+                  no Brasil<br>- Analisar a distribuição da prevalência de CDIS e câncer de mama invasivo EC I bem
+                  como a
+                  cobertura mamográfica a nível e estadual e municipal <br> - Analisar a taxa de cobertura mamográfica
+                  na
+                  população brasileira<br>- Investigar o impacto da cobertura do rastreamento na taxa de detecção
+                  precoce
+                  do câncer de mama no Brasil</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="collapse multi-collapse" id="CollapseMethods">
+            <div class="card-body" style="color: white; text-align: justify;">
+              <b>METODOLOGIA</b>
+              <p class="text-break" style="text-align: justify;"><br>Baixamos dados
+                de fontes online em
+                a fim de estimar a cobertura da mamografia e a detecção precoce do câncer de mama
+                taxa de resolução estadual e municipal de 2010 a 2019. As estimativas de população para
+                todos os municípios de 2011 a 2019 foram baixados do Instituto Brasileiro de
+                Site da Geografia e Estatística (IBGE)
+                (https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html?=&t=downloads).
+                A população em 2010
+                e sua distribuição por gênero e faixa etária foi baseada em (https://cidades.ibge.gov.
+                br / brasil / panorama). O número total brasileiro de mamografias de rastreamento do Censo em 2010 por
+                município / estado de 2010 a 2019 foi obtido no banco de dados DATASUS - SIA-PA. Tudo
+                arquivos de banco de dados do servidor DATASUS (ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/
+                200801_ / Dados /), lidos em ambiente R e recuperados todos os laudos de mamografia de rastreamento
+                com base no código de procedimento '204030188'. Os exames de triagem em homens foram excluídos. O
+                Ministério da Saúde do Brasil recomenda exame de mamografia bienal para
+                mulheres de 50 a 69 anos. A cobertura média de mamografia de 10 anos foi
+                estimado pelo total de mamografias realizadas entre 2010 e 2019 por 5 vezes
+                a média da população estimada de 50 a 69 anos de 2010 a 2019.
+                Dados do câncer de mama INCA (https://irhc.inca.gov.br/RHCNet) e FOSP
+                (http://www.fosp.saude.sp.gov.br/wp-content/uploads/PACI00-15.zip). Nós consideramos
+                pacientes com câncer de mama em estágio inicial (EBC) com diagnóstico de estágio 0 (carcinoma in situ)
+                e estágio I. Pacientes com estágio indefinido e câncer de mama masculino eram
+                excluídos. A taxa de detecção de estágio inicial foi estimada pela proporção do número
+                de casos de EBC e o número total de câncer de mama relatado (C50 do IDC
+                [REF]).
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="lead" style="color: white;"> <b>DOI:</b> XX.XXXX/XXXXXXXX.XXXX.XXXXXX <a class="link" href="#">
+        <p>Link artigo</p>
+      </a> </p>
+
+  </div>
+
+  <div class="container-fluid" style="margin-top: 0%;">
+    <div class="container-fluid" style="width: 80%; margin-top: 2%; margin-bottom: 2%; border-radius: 5%;">
+
+      <section class="author-box" style="width: 100%; margin-bottom: 2%;">
+        <div class="card-default" style="width: 100%;">
+          <div class="card-body" style="margin-bottom: 2%;">
+
+            <div class="row">
+              <hr class="visible-xl-block">
+              <div class="col-xs-auto-6 col-xs-offset-2 col-sm-2 col-sm-offset-0"
+                style="align-items: center; align-content: center;">
+                <div class="container" style="margin-top: 7%;">
+                  <img class="img-responsive img-circle center-block" style=" border-radius: 80%;"
+                    src="static/_media/perfil.png">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <hr class="visible-xs-block">
+                <div class="author-box-intro small text-muted">Autor</div>
+                <!-- .author-box-intro -->
+                <div class="author-inline-block">
+                  <h4 class="author-box-title">
+                    <span class="author-name text-primary">Isabela Campeti Cuoghi</span><small
+                      class="author-social-links small">
+                    </small>
+                  </h4>
+                </div>
+                <div class="author-box-content">
+                  Email
+                </div><!-- author-box-content -->
+              </div><!-- col -->
+
+              <div class="col-xs-auto-6 col-xs-offset-2 col-sm-2 col-sm-offset-0"
+                style="align-items: center; align-content: center;">
+                <div class="container" style="margin-top: 7%;">
+                  <img class="img-responsive img-circle center-block" style=" border-radius: 80%;"
+                    src="static/_media/perfil.png">
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-4">
+                <hr class="visible-xs-block">
+                <div class="author-box-intro small text-muted">Autor</div>
+                <!-- .author-box-intro -->
+                <div class="author-inline-block">
+                  <h4 class="author-box-title">
+                    <span class="author-name text-primary">Mariana Furlani da Silva Soares</span><small
+                      class="author-social-links small">
+                    </small>
+                  </h4>
+                </div>
+                <div class="author-box-content">
+                  Email
+                </div><!-- author-box-content -->
+              </div><!-- col -->
+            </div><!-- row -->
+
+            <div class="row">
+              <div class="col-xs-auto-6 col-xs-offset-2 col-sm-2 col-sm-offset-0"
+                style="align-items: center; align-content: center;">
+                <div class="container" style="margin-top: 7%;">
+                  <img class="img-responsive img-circle center-block" style=" border-radius: 80%;"
+                    src="static/_media/perfil.png">
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-4">
+                <hr class="visible-xs-block">
+                <div class="author-box-intro small text-muted">Autor</div>
+                <!-- .author-box-intro -->
+                <div class="author-inline-block">
+                  <h4 class="author-box-title">
+                    <span class="author-name text-primary">Daniel Guimarães Tiezzi</span><small
+                      class="author-social-links small">
+                    </small>
+                  </h4>
+                </div>
+                <div class="author-box-content">
+                  Email
+                </div><!-- author-box-content -->
+              </div><!-- col -->
+
+              <div class="col-xs-auto-6 col-xs-offset-2 col-sm-2 col-sm-offset-0"
+                style="align-items: center; align-content: center;">
+                <div class="container" style="margin-top: 7%;">
+                  <img class="img-responsive img-circle center-block" style=" border-radius: 80%;"
+                    src="static/_media/perfil.png">
+                </div>
+              </div><!-- col-sm-3 -->
+
+              <div class="col-xs-5 col-sm-4">
+                <hr class="visible-xs-block">
+                <div class="author-box-intro small text-muted">Autor</div>
+                <!-- .author-box-intro -->
+                <div class="author-inline-block">
+                  <h4 class="author-box-title">
+                    <span class="author-name text-primary">Priscila Longhin Bosquesi</span><small
+                      class="author-social-links small">
+                    </small>
+                  </h4>
+                </div>
+                <div class="author-box-content">
+                  Email
+                </div><!-- author-box-content -->
+              </div><!-- col -->
+
+            </div><!-- row -->
+
+            <div class="row justify-content-center">
+              <div class="col-xs-auto-6 col-xs-offset-2 col-sm-2 col-sm-offset-0"
+                style="align-items: center; align-content: center;">
+                <div class="container" style="margin-top: 7%;">
+                  <img class="img-responsive img-circle center-block" style=" border-radius: 80%;"
+                    src="static/_media/perfil.png">
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-4">
+                <hr class="visible-xs-block">
+                <div class="author-box-intro small text-muted">Colaborador</div>
+                <!-- .author-box-intro -->
+                <div class="author-inline-block">
+                  <h4 class="author-box-title">
+                    <span class="author-name text-primary">Gustavo Motta Cabello dos Santos</span><small
+                      class="author-social-links small">
+                    </small>
+                  </h4>
+                </div>
+                <div class="author-box-content">
+                  Email
+                </div><!-- author-box-content -->
+              </div><!-- col -->
+            </div><!-- row -->
+
+          </div><!-- card-body -->
+        </div><!-- card -->
+      </section><!-- author-box -->
+    </div>
+  </div>
+
+  <div class="container" style="width: 100%; margin-bottom: 2%;">
+
+    <div class="row justify-content-center">
+
+      <hr class="visible-xxl-block">
+
+      <div class="col-xxl">
+        <div class="card">
+          <img src="/static/_media/dataReferences.png" class="card-img-top" alt="universities">
+          <div class="card-body">
+            <h2 class="card-title" style="color: black; text-align: center;">Bancos de Dados Utilizados</h2><br>
+            <a target="_blank" class="link" href="https://datasus.saude.gov.br/">
+              <p class="card-text">Departamento de Informática do Sistema Único de Saúde</p>
+            </a>
+            <a target="_blank" class="link" href="http://www.fosp.saude.sp.gov.br/">
+              <p class="card-text">Fundação Oncocentro de São Paulo</p>
+            </a>
+            <a target="_blank" class="link" href="https://www.inca.gov.br/">
+              <p class="card-text">Instituto Nacional de Câncer</p>
+            </a>
+            <a target="_blank" class="link" href="https://www.ibge.gov.br/">
+              <p class="card-text">Instituto Brasileiro de Geografia e Estatística</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xxl">
+        <div class="card">
+          <img src="/static/_media/universities.png" class="card-img-top" alt="universities">
+          <div class="card-body">
+            <h2 class="card-title" style="color: black; text-align: center;">Universidades Envolvidas</h2>
+            <a target="_blank" class="link" href="https://www2.fcfar.unesp.br/">
+              <p class="card-text">Faculdade de Ciências Farmacêuticas UNESP, Araraquara, SP</p>
+            </a>
+            <a target="_blank" class="link" href="http://www.fmrp.usp.br/pb/">
+              <p class="card-text">Faculdade de Medicina de Ribeirão Preto FMRP – USP, Ribeirão Preto, SP</p>
+            </a>
+            <a target="_blank" class="link" href="https://unilago.riopreto.br/?page_id=1098">
+              <p class="card-text">CEPAM - Centro de Pesquisa Avançada em Medicina da UNILAGO, Faculdade de
+                Medicina UNILAGO, União das Faculdades dos Grandes Lagos, SJRP, SP</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-copyright text-end py-3">
+    <img src="static/_media/signature.png" style="width: 4%; margin-right:10%; opacity: 0.6;">
+  </div>
+
+  <div class="footer-copyright text-center py-3">
+    © 2021 Copyright: Gustavo Cabello
+  </div>
+
+  <!--
+  Modal (Gráfico 1)
+  <div class="modal" id="myModal" role="dialog" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Correlação entre a cobertura mamográfica e a taxa de detecção do câncer de mama inicial 
+            em todos os estados brasileiros</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="static/_media/_graphics/figure1Article.png" class="img-fluid" alt="..."> FUTURO GRÁFICO GERADO PELO PLOTLY
+
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+          </div>
+          <div class="modal-footer">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  Trecho do artigo
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Analisamos a cobertura de mamografia em todos os estados brasileiros. Existe um
+                  variação significativa na proporção de mamografias realizadas em mulheres de 50 a 69 anos nos 27 estados 
+                  (p <0,0001). Os estados de Minas Gerais, Bahia e Rio de Janeiro são os estados mais bem classificados 
+                  (62,9%, 62,9% e 62,4%, respectivamente) e os estados do Amapá, Roraima e Amazonas ficam nas últimas posições 
+                  (49,2%, 49,8% e 50,8%, respectivamente). Nós também observamos uma variação significativa na cobertura média 
+                  de mamografias entre os estados (p <0,0001). A maior cobertura média de mamografia foi observada nos estados do 
+                  Paraná, Santa Catarina e Minas Gerais (34,1%, 32,9% e 32,5%, respectivamente) e o menor foi observado no Amapá, 
+                  Distrito Federal e Pará (2,3%, 6,3% e 9,4%, respectivamente). A taxa de detecção do câncer de mama inicial no Brasil é de 27%.
+                  A maior taxa de detecção do câncer de mama inicial entre os brasileiros estados estão em Santa Catarina, Minas 
+                  Gerais e Rio Grande do Sul (32,5%, 31,3% e 30,6%, respectivamente), e as menores ficam no Pará, Tocantins e Acre (8,1%, 10,4% e 10,4%,
+                  respectivamente). Existe uma forte correlação (rho = 0,71) entre a cobertura e a detecção do câncer de mama inicial 
+                  taxa entre os estados brasileiros (p <0,0001).</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    Modal (Gráfico 2)
+    <div class="modal" id="myModal2" role="dialog" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Correlação entre a cobertura mamográfica e a taxa de detecção do câncer de mama inicial 
+              em 678 condados brasileiros</h5>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="..." class="img-fluid" alt="...">FUTURO GRÁFICO GERADO PELO PLOTLY
+
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+            </div>
+            <div class="modal-footer">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Trecho do artigo
+                  </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                  data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">Analisamos a cobertura de mamografia em todos os estados brasileiros. Existe um
+                    variação significativa na proporção de mamografias realizadas em mulheres de 50 a 69 anos nos 27 estados 
+                    (p <0,0001). Os estados de Minas Gerais, Bahia e Rio de Janeiro são os estados mais bem classificados 
+                    (62,9%, 62,9% e 62,4%, respectivamente) e os estados do Amapá, Roraima e Amazonas ficam nas últimas posições 
+                    (49,2%, 49,8% e 50,8%, respectivamente). Nós também observamos uma variação significativa na cobertura média 
+                    de mamografias entre os estados (p <0,0001). A maior cobertura média de mamografia foi observada nos estados do 
+                    Paraná, Santa Catarina e Minas Gerais (34,1%, 32,9% e 32,5%, respectivamente) e o menor foi observado no Amapá, 
+                    Distrito Federal e Pará (2,3%, 6,3% e 9,4%, respectivamente). A taxa de detecção do câncer de mama inicial no Brasil é de 27%.
+                    A maior taxa de detecção do câncer de mama inicial entre os brasileiros estados estão em Santa Catarina, Minas 
+                    Gerais e Rio Grande do Sul (32,5%, 31,3% e 30,6%, respectivamente), e as menores ficam no Pará, Tocantins e Acre (8,1%, 10,4% e 10,4%,
+                    respectivamente). Existe uma forte correlação (rho = 0,71) entre a cobertura e a detecção do câncer de mama inicial 
+                    taxa entre os estados brasileiros (p <0,0001).</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>-->
+
+
+      <!-- JavaScript and dependencies -->
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

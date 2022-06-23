@@ -1,0 +1,134 @@
+@media only screen and (max-device-width: 900px){
+  /*Ipad*/
+    a.btn.btn-lg.btn-primary{width: auto; font-size: 10px;}
+    .container-md{width: auto; flex-direction: column;}
+}
+@media only screen and (max-device-width: 700px) {
+  .title{font-size: small;}
+     a.btn.btn-lg.btn-primary{width: auto; font-size: 13px;}
+     .container-md{width: auto; flex-direction: column;}
+     .carousel.slide{width: auto;}
+     .p{font-size: 10px;}
+     .display-4{font-size: 23px;}
+     .h1{font-size: 23px;}
+     .h2{font-size: 16px;}
+     .h5{font-size: 8px;}
+}
+
+h1 {
+  color: rgb(255, 255, 255);
+}
+h2 {
+  color: rgb(236, 183, 49);
+}
+
+.container-fluid:hover {
+
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+
+}
+
+.container:hover{
+
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.container-md{
+  width: 50%;
+  display: flex;
+  border-color: black;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  align-content: center;
+  align-items: center;
+}
+
+.container-sm{
+  display: flex;
+  width: 80%;
+  border-color: black;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+a.btn.btn-lg.btn-primary {
+  width: 80%;
+  margin-top: 2%;
+  background-color: white;
+  color: black;
+  align-items: center;
+  border-radius: 15px;
+}
+
+a.btn.btn-lg.btn-primary:hover{
+
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.808);
+}
+
+.container-xl{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin-top: 1%;
+  margin-bottom: 1%;
+ 
+}
+
+.carousel.slide{
+  width: 100%; 
+  height: auto;
+  margin-top: 1%;
+  margin-bottom: 4%;
+  background-color: rgba(218, 218, 218, 0.623);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  color: black;
+
+}
+
+.carousel-item{
+
+  width: auto;
+
+}
+
+.carousel.slide:hover{
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.808);
+}
+
+.d-block.w-100{
+   width: 10%;
+}
+
+.carousel-caption.d-none.d-md-block{
+
+  color: black;
+  font-style: oblique;
+  font-size: 0.5vw;
+
+}
+
+.contentCard{
+  margin-top: 5%;
+  width: 90%;
+  height: 85%;
+  background-color: rgba(255, 225, 245, 0.507);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.logoFooter{
+  border-radius: 10%;
+  width: 30%;
+}
+
+
