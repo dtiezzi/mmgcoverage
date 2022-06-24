@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect
 from modules.brmaps import *
 from modules.ufIbge import UfBr
+from modules.loadfiles import LoadFiles
 import pandas as pd
 import json
 import os
@@ -9,9 +10,13 @@ app = Flask(__name__)
 
 app.static_folder = 'static'
 
+uf_dic = UfBr().state_dict
+LoadFiles(['_geojson/brstates.geojson', '_geojson/br_mun_all.json']).loadjson()
+LoadFiles(['csv/Supplemental_table_states_data.csv', 'csv/Supplemental_table_municipality_data.csv']).loadcsv()
+
 geofileST = '_geojson/brstates.geojson'
 geofileCT = '_geojson/br_mun_all.json'
-uf_dic = UfBr().state_dict
+
 DATA_STATES = "csv/Supplemental_table_states_data.csv"
 DATA_MUNICIP = "csv/Supplemental_table_municipality_data.csv"
 st_df = pd.read_csv(DATA_STATES, index_col=False)
