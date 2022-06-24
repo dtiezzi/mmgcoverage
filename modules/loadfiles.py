@@ -9,8 +9,8 @@ class LoadFiles():
     def loadjson(self):
         json_files = []
         for file in [f for f in self.files if f.endswith('json')]:
-            jsonfile = open(file)
-            json_files.append(json.load(jsonfile))
+            with open(file, "rb") as jsonfile:
+                json_files.append(json.load(jsonfile))
         return json_files
 
     def loadcsv(self):

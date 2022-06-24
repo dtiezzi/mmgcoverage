@@ -11,8 +11,8 @@ app = Flask(__name__)
 app.static_folder = 'static'
 
 uf_dic = UfBr().state_dict
-states, counties = LoadFiles(['_geojson/brstates.geojson', '_geojson/br_mun_all.json']).loadjson()
-st_df, ct_df = LoadFiles(['csv/Supplemental_table_states_data.csv', 'csv/Supplemental_table_municipality_data.csv']).loadcsv()
+states, counties = LoadFiles(['/var/www/mmgcov.com/_geojson/brstates.geojson', '/var/www/mmgcov.com/_geojson/br_mun_all.json']).loadjson()
+st_df, ct_df = LoadFiles(['/var/www/mmgcov.com/csv/Supplemental_table_states_data.csv', '/var/www/mmgcov.com/csv/Supplemental_table_municipality_data.csv']).loadcsv()
 
 ## Filt columns
 st_df = st_df[['ibge_uf_id','uf', 'avg_mmg_coverage_50_69_ans_adj','avg_mmg_coverage_40_49_ans_adj','ebc_det_ratio_50_69','ebc_det_ratio_40_49', 'avg_population']]
@@ -22,8 +22,8 @@ ct_df = ct_df[['uf', 'name_uf', 'ibge_munic_id', 'name_munic', 'mmg_coverage_50_
 
 uf_unique_df = ct_df[ct_df['uf'] == 'SP']
 uf = uf_dic['SP']
-uniq_json_file = f'_geojson/munic/geojs-{uf}-mun.json'
-uniq_json = open(uniq_json_file)
+uniq_json_file = f'/var/www/mmgcov.com/_geojson/munic/geojs-{uf}-mun.json'
+uniq_json = open(uniq_json_file, "rb")
 uniq_municipalities = json.load(uniq_json)   
 lon, lat = latlon(uniq_municipalities)
 
