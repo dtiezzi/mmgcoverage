@@ -1,0 +1,31 @@
+@media only screen and (max-device-width: 700px) {
+    .display-4{font-size: 23px;}
+    .container{height: 50px;}
+}
+
+#graphic{
+    margin: 2%;
+  }
+  
+  #tables{
+    margin: 2%;
+  }
+
+  .box{
+    display: none;
+  }
+
+  .img-fluid{
+    border-radius: 15px;
+    opacity: 1.0;
+  }
+
+  .img-fluid:hover{
+
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+    
+  }
+
+  .container-fluid:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0);
+  }

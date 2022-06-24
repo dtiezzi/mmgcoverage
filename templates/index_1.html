@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='_css/index.css') }}" />
+
+  <title>Câncer de Mama Brasil</title>
+</head>
+
+<body style="background-color: white;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">HOME</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:8501" target="_blank">APLICATIVO</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutProject">SOBRE</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" target="_blank" href="http://cancermamabrasil.com.br/">PESQUISA NACIONAL</a>
+          </li>
+           <!--<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              GRÁFICOS
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" data-toggle="modal" data-target="#myModal">Abrir Gráfico 1</a></li>
+              <li><a class="dropdown-item" data-toggle="modal" data-target="#myModal2">Abrir Gráfico 2</a></li>
+            </ul>
+          </li>-->
+        </ul>
+        <span class="navbar-text"> Câncer de Mama Brasil </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- <div class="container"></div> -->
+  <div class="container-fluid" style="display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4%;
+  background: rgb(156, 0, 104);
+  color: white;">
+    <h1 class="display-4" style="text-align:center; margin-top:2%;">CÂNCER DE MAMA BRASIL - ESTATÍSTICAS E FATOS</h1>
+    <p class="h2" style="text-align: center; color: rgb(236, 183, 49); margin-top:3%;"> Cobertura de rastreamento
+      mamográfico e detecção do câncer de mama </p>
+
+    <div class="container-md">
+        <a href="http://localhost:8501" target="_blank" type="button" class="btn btn-lg btn-primary">Aplicação: Rastreamento Mamográfico</a>
+    </div>
+  </div>
+
+  <div class="container-fluid" style="width: 95%; margin-top: 1%;">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="4000">
+          <img src="/static/_media/_index/appHomePage.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <div class="container"
+              style="background-color: rgba(223, 223, 223, 0.9); width: 30%; padding: 2%; border-radius: 10px;">
+              <h5>Aplicação para análise interativa dos dados recolhidos</h5>
+              <!--<a data-toggle="modal" data-target="#myModal2" type="button" class="btn btn-info"
+                style="background: rgb(156, 0, 104); color: white; width: 70%;">Mais Informações</a>-->
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="4000">
+          <img src="/static/_media/_index/graphic1.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <div class="container"
+              style="background-color: rgba(223, 223, 223, 0.9); width: 30%; padding: 2%; border-radius: 10px;">
+              <h5>Cobertura mamográfica e a taxa de detecção de câncer de mama inicial - BRASIL</h5>
+              <h6>Análise Gráfica dos dados recolhidos</h6>
+              <!--<a data-toggle="modal" data-target="#myModal" type="button" class="btn btn-info"
+                style="background: rgb(156, 0, 104); color: white; width: 70%;">Mais Informações</a>-->
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="4000">
+          <img src="/static/_media/_index/CMWebPage.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <div class="container"
+              style="background-color: rgba(223, 223, 223, 0.9); width: 25%; padding: 2%; border-radius: 10px;">
+              <h5>Pesquisa Nacional - Câncer de Mama - FMRPUSP</h5>
+              <a target="_blank" href="http://cancermamabrasil.com.br/" type="button" class="btn btn-info"
+                style="background: rgb(156, 0, 104); color: white; width: 70%;">Ir
+                para a Página</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="container-lg"
+    style="margin-top: 2%; margin-bottom: 2%; display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+    <a href="https://unilago.riopreto.br/" target="_blank">
+      <img src="/static/_media/_logos/unilagoLogo.jpeg" alt="UNILAGO Medicina" width="60%">
+    </a>
+
+    <a href="http://www.fmrp.usp.br/pb/" target="_blank">
+      <img src="/static/_media/_logos/fmrpLogo.png" alt="Faculdade de Medicina de RIbeirão Preto - USP" width="60%">
+    </a>
+
+    <a href="https://www2.fcfar.unesp.br/" target="_blank">
+      <img src="/static/_media/_logos/unespLogo1.jpg" alt="Faculdade de Ciências Farmacêuticas UNESP, Araraquara"
+        width="60%">
+    </a>
+
+  </div>
+
+  <div class="footer-copyright text-end py-3">
+    <img src="static/_media/signature.png" style="width: 4%; margin-right:10%;">
+  </div>
+
+  <div class="footer-copyright text-center py-3">
+    © 2021 Copyright: Gustavo Cabello
+  </div>
+
+  <!--
+  Modal (Gráfico 1)
+  <div class="modal" id="myModal" role="dialog" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Correlação entre a cobertura mamográfica e a taxa de detecção do câncer de mama inicial 
+            em todos os estados brasileiros</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="static/_media/_graphics/figure1Article.png" class="img-fluid" alt="..."> FUTURO GRÁFICO GERADO PELO PLOTLY
+
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+          </div>
+          <div class="modal-footer">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  Trecho do artigo
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Analisamos a cobertura de mamografia em todos os estados brasileiros. Existe um
+                  variação significativa na proporção de mamografias realizadas em mulheres de 50 a 69 anos nos 27 estados 
+                  (p <0,0001). Os estados de Minas Gerais, Bahia e Rio de Janeiro são os estados mais bem classificados 
+                  (62,9%, 62,9% e 62,4%, respectivamente) e os estados do Amapá, Roraima e Amazonas ficam nas últimas posições 
+                  (49,2%, 49,8% e 50,8%, respectivamente). Nós também observamos uma variação significativa na cobertura média 
+                  de mamografias entre os estados (p <0,0001). A maior cobertura média de mamografia foi observada nos estados do 
+                  Paraná, Santa Catarina e Minas Gerais (34,1%, 32,9% e 32,5%, respectivamente) e o menor foi observado no Amapá, 
+                  Distrito Federal e Pará (2,3%, 6,3% e 9,4%, respectivamente). A taxa de detecção do câncer de mama inicial no Brasil é de 27%.
+                  A maior taxa de detecção do câncer de mama inicial entre os brasileiros estados estão em Santa Catarina, Minas 
+                  Gerais e Rio Grande do Sul (32,5%, 31,3% e 30,6%, respectivamente), e as menores ficam no Pará, Tocantins e Acre (8,1%, 10,4% e 10,4%,
+                  respectivamente). Existe uma forte correlação (rho = 0,71) entre a cobertura e a detecção do câncer de mama inicial 
+                  taxa entre os estados brasileiros (p <0,0001).</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    Modal (Gráfico 2)
+    <div class="modal" id="myModal2" role="dialog" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Correlação entre a cobertura mamográfica e a taxa de detecção do câncer de mama inicial 
+              em 678 condados brasileiros</h5>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="..." class="img-fluid" alt="...">FUTURO GRÁFICO GERADO PELO PLOTLY
+
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+            </div>
+            <div class="modal-footer">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Trecho do artigo
+                  </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                  data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">Analisamos a cobertura de mamografia em todos os estados brasileiros. Existe um
+                    variação significativa na proporção de mamografias realizadas em mulheres de 50 a 69 anos nos 27 estados 
+                    (p <0,0001). Os estados de Minas Gerais, Bahia e Rio de Janeiro são os estados mais bem classificados 
+                    (62,9%, 62,9% e 62,4%, respectivamente) e os estados do Amapá, Roraima e Amazonas ficam nas últimas posições 
+                    (49,2%, 49,8% e 50,8%, respectivamente). Nós também observamos uma variação significativa na cobertura média 
+                    de mamografias entre os estados (p <0,0001). A maior cobertura média de mamografia foi observada nos estados do 
+                    Paraná, Santa Catarina e Minas Gerais (34,1%, 32,9% e 32,5%, respectivamente) e o menor foi observado no Amapá, 
+                    Distrito Federal e Pará (2,3%, 6,3% e 9,4%, respectivamente). A taxa de detecção do câncer de mama inicial no Brasil é de 27%.
+                    A maior taxa de detecção do câncer de mama inicial entre os brasileiros estados estão em Santa Catarina, Minas 
+                    Gerais e Rio Grande do Sul (32,5%, 31,3% e 30,6%, respectivamente), e as menores ficam no Pará, Tocantins e Acre (8,1%, 10,4% e 10,4%,
+                    respectivamente). Existe uma forte correlação (rho = 0,71) entre a cobertura e a detecção do câncer de mama inicial 
+                    taxa entre os estados brasileiros (p <0,0001).</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>-->
+
+      <!-- JavaScript and dependencies -->
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
