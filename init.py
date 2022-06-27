@@ -14,7 +14,6 @@ uf_dic = UfBr().state_dict
 uf_names_dic = UfBr().state_name_dict
 uf_area_dic = UfBr().state_area_dict
 uf_area_dic = {k: 1 - (uf_area_dic[k] - min(uf_area_dic.values())) / (max(uf_area_dic.values()) - min(uf_area_dic.values())) for k in uf_area_dic}
-print(uf_area_dic)
 
 states, counties = LoadFiles(['_geojson/brstates.geojson', '_geojson/br_mun_all.json']).loadjson()
 st_df, ct_df = LoadFiles(['csv/Supplemental_table_states_data.csv', 'csv/Supplemental_table_municipality_data.csv']).loadcsv()
