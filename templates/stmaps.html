@@ -71,9 +71,7 @@
                 </div>
             </div>
             <div class="col py-3">
-                <div id="head_img" style="display: flex; justify-content: space-around;">
-                    <img src="../static/_media/mammographyApp.png" alt="" height="250">
-                </div>
+                <img class="img-fluid mx-auto" src="../static/_media/mammographyApp.png" alt="" style="max-width: 50%; display: block;margin:0 auto;">
                 <div class="st_form" style="margin-top: 30px; display: flex; justify-content: space-evenly; margin-bottom: 20px; margin-left: 5%;">
                     <form action="/stmaps" method="POST">
                     <select class="form-select" id="state" name="state" onchange='if(this.value != 0) { this.form.submit(); }'>
@@ -108,11 +106,11 @@
                       </select>
                     </form>
                     <h4>{{ uf_name }}</h4>
-                </div>
-                <div class="br_maps" style="display: flex; justify-content: space-evenly;">
+                </div>         
+                <figure class="img-fluid" style="margin-top: 30px; display: flex; justify-content: space-evenly; flex-wrap: wrap;">
                     {{ figure[0]|safe }}
                     {{ figure[1]|safe }}
-                </div>
+                </figure>
         </div>
     </div>
     

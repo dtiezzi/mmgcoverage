@@ -71,13 +71,12 @@
                 </div>
             </div>
             <div class="col py-3">
-                <div id="head_img" style="display: flex; justify-content: space-around;">
-                    <img src="../static/_media/mammographyApp.png" alt="" height="250">
-                </div>
-                <div class="br_maps" style="margin-top: 30px; display: flex; justify-content: space-evenly;">
+                <img class="img-fluid mx-auto" src="../static/_media/mammographyApp.png" alt="" style="max-width: 50%; display: block;margin:0 auto;">
+               
+                <figure class="img-fluid" style="margin-top: 30px; display: flex; justify-content: space-evenly; flex-wrap: wrap;">
                     {{ figure[0]|safe }}
                     {{ figure[1]|safe }}
-                </div>
+                </figure>
         </div>
     </div>
     
