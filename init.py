@@ -15,8 +15,8 @@ uf_names_dic = UfBr().state_name_dict
 uf_area_dic = UfBr().state_area_dict
 uf_area_dic = {k: 1 - (uf_area_dic[k] - min(uf_area_dic.values())) / (max(uf_area_dic.values()) - min(uf_area_dic.values())) for k in uf_area_dic}
 
-states, counties = LoadFiles(['_geojson/brstates.geojson', '_geojson/br_mun_all.json']).loadjson()
-st_df, ct_df = LoadFiles(['csv/Supplemental_table_states_data.csv', 'csv/Supplemental_table_municipality_data.csv']).loadcsv()
+states, counties = LoadFiles(['/var/www/mmgcov.com/_geojson/brstates.geojson', '/var/www/mmgcov.com/_geojson/br_mun_all.json']).loadjson()
+st_df, ct_df = LoadFiles(['/var/www/mmgcov.com/csv/Supplemental_table_states_data.csv', '/var/www/mmgcov.com/csv/Supplemental_table_municipality_data.csv']).loadcsv()
 
 ## Filt columns
 st_df = st_df[['ibge_uf_id','uf', 'avg_mmg_coverage_50_69_ans_adj','avg_mmg_coverage_40_49_ans_adj','ebc_det_ratio_50_69','ebc_det_ratio_40_49', 'avg_population']]
@@ -51,7 +51,7 @@ def stmaps():
     uf_cod = uf_dic[uf]
     uf_name = uf_names_dic[uf]
     uf_area = uf_area_dic[uf]
-    uniq_json_file = f'_geojson/munic/geojs-{uf_cod}-mun.json'
+    uniq_json_file = f'/var/www/mmgcov.com/_geojson/munic/geojs-{uf_cod}-mun.json'
     uniq_json = open(uniq_json_file, "rb")
     uniq_municipalities = json.load(uniq_json)   
     lon, lat = latlon(uniq_municipalities)
