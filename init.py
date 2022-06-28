@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from flask_caching import Cache
 from modules.brmaps import *
 from modules.ufIbge import UfBr
 from modules.loadfiles import LoadFiles
@@ -22,8 +23,8 @@ st_df, ct_df = LoadFiles(['/var/www/mmgcov.com/csv/Supplemental_table_states_dat
 st_df = st_df[['ibge_uf_id','uf', 'avg_mmg_coverage_50_69_ans_adj','avg_mmg_coverage_40_49_ans_adj','ebc_det_ratio_50_69','ebc_det_ratio_40_49', 'avg_population']]
 ct_df = ct_df[['uf', 'name_uf', 'ibge_munic_id', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'mmg_coverage_40_49_ans_adj_max100', 'ebc_det_ratio_50_69', 'ebc_det_ratio_40_49', 'total_number_mmg_50_69', 'total_number_mmg_40_49', 'avg_population']]
 
-figBr1 = plotmapCounties(ct_df, counties, ctitle='Mammogram coverage from 2010 to 2019 (50-70 years)', colname='mmg_coverage_50_69_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'ebc_det_ratio_50_69'])
-figBr2 = plotmapCounties(ct_df, counties, ctitle='Mammogram coverage from 2010 to 2019 (40-50 years)', colname='mmg_coverage_40_49_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_40_49_ans_adj_max100', 'ebc_det_ratio_40_49'], age=40)
+figBr1 = plotmapCounties(ct_df, counties, ctitle='Mammogram coverage 2010-2019 (50-70 years)', colname='mmg_coverage_50_69_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'ebc_det_ratio_50_69'])
+figBr2 = plotmapCounties(ct_df, counties, ctitle='Mammogram coverage 2010-2019 (40-50 years)', colname='mmg_coverage_40_49_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_40_49_ans_adj_max100', 'ebc_det_ratio_40_49'], age=40)
 divBr1 = figBr1.to_html(full_html=False)
 divBr2 = figBr2.to_html(full_html=False)
 
@@ -35,8 +36,8 @@ def index():
 
 @app.route('/brstmaps')
 def brmaps():
-    figBrSt1 = plotmapStates(st_df, states, ctitle='Mammogram coverage from 2010 to 2019 (50-0 years)', colname='avg_mmg_coverage_50_69_ans_adj', chover=['uf', 'avg_mmg_coverage_50_69_ans_adj', 'ebc_det_ratio_50_69'])
-    figBrSt2 = plotmapStates(st_df, states, ctitle='Mammogram coverage from 2010 to 2019 (40-50 years)', colname='avg_mmg_coverage_40_49_ans_adj', chover=['uf', 'avg_mmg_coverage_50_69_ans_adj', 'ebc_det_ratio_40_49'])
+    figBrSt1 = plotmapStates(st_df, states, ctitle='Mammogram coverage 2010-2019 (50-0 years)', colname='avg_mmg_coverage_50_69_ans_adj', chover=['uf', 'avg_mmg_coverage_50_69_ans_adj', 'ebc_det_ratio_50_69'])
+    figBrSt2 = plotmapStates(st_df, states, ctitle='Mammogram coverage 2010-2019 (40-50 years)', colname='avg_mmg_coverage_40_49_ans_adj', chover=['uf', 'avg_mmg_coverage_50_69_ans_adj', 'ebc_det_ratio_40_49'])
     divBrSt1 = figBrSt1.to_html(full_html=False)
     divBrSt2 = figBrSt2.to_html(full_html=False)
     return render_template('/brstmaps.html', figure = [divBrSt1, divBrSt2])
@@ -55,8 +56,8 @@ def stmaps():
     uniq_json = open(uniq_json_file, "rb")
     uniq_municipalities = json.load(uniq_json)   
     lon, lat = latlon(uniq_municipalities)
-    fig1 = plotmapCounties(uf_unique_df, uniq_municipalities, ctitle='Mammogram coverage from 2010 to 2019 (50-70 years)', colname='mmg_coverage_50_69_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'ebc_det_ratio_50_69'], zoom=4 + uf_area, lat=lat, lon=lon)
-    fig2 = plotmapCounties(uf_unique_df, uniq_municipalities, ctitle='Mammogram coverage from 2010 to 2019 (40-50 years)', colname='mmg_coverage_50_69_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'ebc_det_ratio_50_69'], zoom=4 + uf_area, lat=lat, lon=lon)
+    fig1 = plotmapCounties(uf_unique_df, uniq_municipalities, ctitle='Mammogram coverage 2010-2019 (50-70 years)', colname='mmg_coverage_50_69_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'ebc_det_ratio_50_69'], zoom=4 + uf_area, lat=lat, lon=lon)
+    fig2 = plotmapCounties(uf_unique_df, uniq_municipalities, ctitle='Mammogram coverage 2010-2019 (40-50 years)', colname='mmg_coverage_50_69_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'ebc_det_ratio_50_69'], zoom=4 + uf_area, lat=lat, lon=lon)
     div1 = fig1.to_html(full_html=False)
     div2 = fig2.to_html(full_html=False)
     return render_template('/stmaps.html', figure = [div1, div2], uf_name = uf_name)
