@@ -5,9 +5,18 @@ from modules.ufIbge import UfBr
 from modules.loadfiles import LoadFiles
 import pandas as pd
 import json
+import pickle
 import os
 
+config = {
+	'DEBUG':  True,
+	'CACHE_TYPE': 'SimpleCache',
+	'CACHE_DEFAULT_TIMEOUT': 300
+}
+
 app = Flask(__name__)
+app.config.from_mapping(config)
+cache = Cache(app)
 
 app.static_folder = 'static'
 
@@ -25,16 +34,22 @@ ct_df = ct_df[['uf', 'name_uf', 'ibge_munic_id', 'name_munic', 'mmg_coverage_50_
 
 figBr1 = plotmapCounties(ct_df, counties, ctitle='Mammogram coverage 2010-2019 (50-70 years)', colname='mmg_coverage_50_69_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'ebc_det_ratio_50_69'])
 figBr2 = plotmapCounties(ct_df, counties, ctitle='Mammogram coverage 2010-2019 (40-50 years)', colname='mmg_coverage_40_49_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_40_49_ans_adj_max100', 'ebc_det_ratio_40_49'], age=40)
+
+# with open('/var/www/mmgcov.com/pickle_files/figBr1.pickle') as f:
+#     figBr1 = pickle.load(f, encoding='latin1')
+# with open('/var/www/mmgcov.com/pickle_files/figBr2.pickle') as f:
+#     figBr2 = pickle.load(f, encoding='latin1')
+
 divBr1 = figBr1.to_html(full_html=False)
 divBr2 = figBr2.to_html(full_html=False)
 
-
-
 @app.route('/')
+@cache.cached(timeout=50)
 def index():
     return render_template('/index.html', figure = [divBr1, divBr2])
 
 @app.route('/brstmaps')
+@cache.cached(timeout=50)
 def brmaps():
     figBrSt1 = plotmapStates(st_df, states, ctitle='Mammogram coverage 2010-2019 (50-0 years)', colname='avg_mmg_coverage_50_69_ans_adj', chover=['uf', 'avg_mmg_coverage_50_69_ans_adj', 'ebc_det_ratio_50_69'])
     figBrSt2 = plotmapStates(st_df, states, ctitle='Mammogram coverage 2010-2019 (40-50 years)', colname='avg_mmg_coverage_40_49_ans_adj', chover=['uf', 'avg_mmg_coverage_50_69_ans_adj', 'ebc_det_ratio_40_49'])
@@ -43,6 +58,7 @@ def brmaps():
     return render_template('/brstmaps.html', figure = [divBrSt1, divBrSt2])
 
 @app.route('/stmaps', methods=['GET', 'POST'])
+@cache.cached(timeout=50)
 def stmaps():
     if request.method == 'POST':
         uf = request.form.get('state')
