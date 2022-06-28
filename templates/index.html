@@ -31,14 +31,14 @@
                                     <a href="/brstmaps" class="nav-link px-0"> <i class="fs-4 bi bi-map"></i><span class="d-none d-sm-inline"> Brazil by State</span></a>
                                 </li>
                                 <li class="w-100">
-                                    <a href="/" class="nav-link px-0"> <i class="fs-4 bi bi-map"></i><span class="d-none d-sm-inline"> Brazil by Municipality</span></a>
+                                    <a href="/mapscov" class="nav-link px-0"> <i class="fs-4 bi bi-map"></i><span class="d-none d-sm-inline"> Brazil by Municipality</span></a>
                                 </li>
                                 <li>
                                 <li class="w-100">
                                     <a href="/stmaps" class="nav-link px-0"> <i class="fs-4 bi bi-map"></i><span class="d-none d-sm-inline"> Selected State</span></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <i class="fs-4 bi bi-bar-chart"></i><span class="d-none d-sm-inline"> Bar charts</span></a>
+                                    <a href="/corplots" class="nav-link px-0"> <i class="fs-4 bi bi-graph-up-arrow"></i><span class="d-none d-sm-inline"> Correlation plots</span></a>
                                 </li>
                             </ul>
                         </li>
@@ -63,9 +63,10 @@
                             <span class="d-none d-sm-inline mx-1">Tiezzi D</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                            <li><a class="dropdown-item" href="#">Webpage</a></li>
-                            <li><a class="dropdown-item" href="#">Github</a></li>
-                            <li><a class="dropdown-item" href="#">Publications</a></li>
+                            <li><a class="dropdown-item" href="http://cancermamabrasil.com.br/" target="_blank">Breast Cancer Risk</a></li>
+                            <li><a class="dropdown-item" href="https://danieltiezzi.pro.br/" target="_blank">Webpage</a></li>
+                            <li><a class="dropdown-item" href="https://github.com/dtiezzi" target="_blank">Github</a></li>
+                            <li><a class="dropdown-item" href="#" target="_blank">Publications</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,10 +75,7 @@
                 <img class="img-fluid mx-auto" src="../static/_media/mammographyApp.png" alt="" style="max-width: 50%; display: block;margin:0 auto;">
                
                 <figure class="img-fluid mx-auto">
-                    <figure style="margin-top: 30px; display: flex; justify-content: space-evenly; flex-wrap: wrap;">
                         {{ figure[0]|safe }}
-                        {{ figure[1]|safe }}
-                    </figure>
                 </figure>
             </div>
     </div>

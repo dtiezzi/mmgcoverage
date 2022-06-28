@@ -73,48 +73,14 @@
             </div>
             <div class="col py-3">
                 <!-- <img class="img-fluid mx-auto" src="../static/_media/mammographyApp.png" alt="" style="max-width: 50%; display: block;margin:0 auto;"> -->
-                <div class="st_form" style="margin-top: 30px; display: flex; justify-content: space-evenly; margin-bottom: 20px; margin-left: 5%;">
-                    <form action="/stmaps" method="POST">
-                    <select class="form-select" id="state" name="state" onchange='if(this.value != 0) { this.form.submit(); }'>
-                        <option value="SP">Select State</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="PI">Piauí</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
-                        <option value="RR">Roraima</option>
-                        <option value="SC">Santa Catarina</option>
-                        <option value="SE">Sergipe</option>
-                        <option value="TO">Tocantins</option>
-                      </select>
-                    </form>
-                    <h4>{{ uf_name }}</h4>
-                </div>         
+               
                 <figure class="img-fluid mx-auto">
                     <figure style="margin-top: 30px; display: flex; justify-content: space-evenly; flex-wrap: wrap;">
                         {{ figure[0]|safe }}
                         {{ figure[1]|safe }}
                     </figure>
                 </figure>
-        </div>
+            </div>
     </div>
     
     

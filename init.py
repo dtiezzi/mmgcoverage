@@ -29,8 +29,8 @@ states, counties = LoadFiles(['/var/www/mmgcov.com/_geojson/brstates.geojson', '
 st_df, ct_df = LoadFiles(['/var/www/mmgcov.com/csv/Supplemental_table_states_data.csv', '/var/www/mmgcov.com/csv/Supplemental_table_municipality_data.csv']).loadcsv()
 
 ## Filt columns
-st_df = st_df[['ibge_uf_id','uf', 'avg_mmg_coverage_50_69_ans_adj','avg_mmg_coverage_40_49_ans_adj','ebc_det_ratio_50_69','ebc_det_ratio_40_49', 'avg_population']]
-ct_df = ct_df[['uf', 'name_uf', 'ibge_munic_id', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'mmg_coverage_40_49_ans_adj_max100', 'ebc_det_ratio_50_69', 'ebc_det_ratio_40_49', 'total_number_mmg_50_69', 'total_number_mmg_40_49', 'avg_population']]
+st_df = st_df[['ibge_uf_id','uf', 'avg_mmg_coverage_50_69_ans_adj','avg_mmg_coverage_40_49_ans_adj','ebc_det_ratio_50_69','ebc_det_ratio_40_49', 'avg_population','avg_pop_50_69_ans_adj', 'avg_pop_40_49_ans_adj']]
+ct_df = ct_df[['uf', 'name_uf', 'ibge_munic_id', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'mmg_coverage_40_49_ans_adj_max100', 'ebc_det_ratio_50_69', 'ebc_det_ratio_40_49', 'total_number_mmg_50_69', 'total_number_mmg_40_49', 'avg_population','avg_pop_50_69_ans_adj', 'avg_pop_40_49_ans_adj','total_number_breast_cases_50_69', 'total_number_breast_cases_40_49']]
 
 figBr1 = plotmapCounties(ct_df, counties, ctitle='Mammogram coverage 2010-2019 (50-70 years)', colname='mmg_coverage_50_69_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'ebc_det_ratio_50_69'])
 figBr2 = plotmapCounties(ct_df, counties, ctitle='Mammogram coverage 2010-2019 (40-50 years)', colname='mmg_coverage_40_49_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_40_49_ans_adj_max100', 'ebc_det_ratio_40_49'], age=40)
@@ -46,7 +46,14 @@ divBr2 = figBr2.to_html(full_html=False)
 @app.route('/')
 @cache.cached(timeout=50)
 def index():
-    return render_template('/index.html', figure = [divBr1, divBr2])
+    barp = load_home_graph(st_df)
+    div = barp.to_html(full_html=False)
+    return render_template('/index.html', figure = [div])
+
+@app.route('/mapscov')
+@cache.cached(timeout=50)
+def mapscov():
+    return render_template('/mapscov.html', figure = [divBr1, divBr2])
 
 @app.route('/brstmaps')
 @cache.cached(timeout=50)
@@ -77,6 +84,13 @@ def stmaps():
     div1 = fig1.to_html(full_html=False)
     div2 = fig2.to_html(full_html=False)
     return render_template('/stmaps.html', figure = [div1, div2], uf_name = uf_name)
+
+@app.route('/corplots', methods=['GET', 'POST'])
+@cache.cached(timeout=50)
+def corplots():
+    cor_st = statesCorplot(st_df)
+    cor_ct = countiesCorplot(ct_df)
+    return render_template('/corplots.html', figure = [cor_st, cor_ct])
 
 @app.route('/aboutProject')
 def about():

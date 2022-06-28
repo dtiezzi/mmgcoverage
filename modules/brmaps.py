@@ -1,4 +1,5 @@
-from cProfile import label
+# from cProfile import label
+from turtle import width
 import plotly.express as px
 import pandas as pd
 import plotly.graph_objects as go
@@ -22,16 +23,16 @@ def plotmapStates(df, geojson, ctitle, colname, chover):
         width=400,
         height=400,
         hover_data=chover,
-        mapbox_style = "carto-positron",
-        center={"lat":-14, "lon": -55},
+        mapbox_style = 'carto-positron',
+        center={'lat':-14, 'lon': -55},
         zoom=2.5,
         opacity=0.5,
         color_continuous_scale = 'Blackbody_r',
         labels={'uf': 'UF', 'avg_mmg_coverage_50_69_ans_adj': 'Média' , 'avg_mmg_coverage_40_49_ans_adj': 'Média', 'ebc_det_ratio_50_69': 'Taxa de Detecção' },
         title=ctitle
     )
-    fig.update_geos(fitbounds="locations", visible=False)
-    fig.update_layout(margin={"r":0,"t":30,"l":0,"b":0})
+    fig.update_geos(fitbounds='locations', visible=False)
+    fig.update_layout(margin={'r':0,'t':30,'l':0,'b':0})
 
     return fig
 
@@ -45,18 +46,18 @@ def plotmapCounties(df, geojson, ctitle, colname, chover, age=50, zoom=2.5, lat=
         width=400,
         height=400,
         hover_data= chover,
-        mapbox_style = "carto-positron",
-        center={"lat": lat, "lon": lon},
+        mapbox_style = 'carto-positron',
+        center={'lat': lat, 'lon': lon},
         zoom=zoom,
         opacity=0.5,
-        featureidkey="properties.id",
+        featureidkey='properties.id',
         color_continuous_scale = 'Blackbody_r',
         labels={'uf': 'UF', 'ibge_munic_id': 'IBGE_ID', 'name_munic':'Nome Município', age_label: 'Media(%)'},
         title=ctitle
     )
-    fig.update_geos(fitbounds="locations", visible=False)
-    fig.update_layout(margin={"r":0,"t":30,"l":0,"b":0})
-    fig.update_traces(marker_line_width=0, marker_line_color="rgba(91,21,21,0.8)")
+    fig.update_geos(fitbounds='locations', visible=False)
+    fig.update_layout(margin={'r':0,'t':30,'l':0,'b':0})
+    fig.update_traces(marker_line_width=0, marker_line_color='rgba(91,21,21,0.8)')
     
     return fig
 
@@ -66,27 +67,27 @@ def load_home_graph(ct_st):
     fig.add_trace(go.Bar(x=ct_st['uf'],
                             y=ct_st['avg_mmg_coverage_50_69_ans_adj'].values,
                             text=ct_st['avg_mmg_coverage_50_69_ans_adj'].values,
-                            name='Cobertura Mamográfica',
+                            name='Mammogram Coverage',
                             marker_color='rgb(55, 83, 109)'
                             ))
     fig.add_trace(go.Bar(x=ct_st['uf'],
                             y=ct_st['ebc_det_ratio_50_69'].values,
                             text=ct_st['ebc_det_ratio_50_69'].values,
-                            name='Taxa de detecção de câncer de mama inicial',
+                            name='Early breast cancer detection ratio',
                             marker_color='rgb(26, 118, 255)'
                             ))
     fig.update_layout(
         width=1450,
         height=600,
-        title='Dados dos estados brasileiros 2010-2019',
+        title='Brazilian States (2010-2019)',
         xaxis_tickfont_size=14,
         xaxis=dict(
-            title='Estados',
+            title='States',
             titlefont_size=22,
         ),
 
         yaxis=dict(
-            title='Porcentagem (%)',
+            title='Percentage (%)',
             titlefont_size=22,
             tickfont_size=14,
         ),
@@ -105,43 +106,34 @@ def load_home_graph(ct_st):
     return fig
 
 
-def countiesGraph(ct_df, st_df, uf, nameCT=None):
-    with st.spinner('Gerando Gráficos'):
-        years = ['2010', '2011', '2012', '2013', '2014',
-                 '2015', '2016', '2017', '2018', '2019']
-        map1, map2 = st.columns((2, 2))
-        title = 'Cobertura mamográfica e a taxa de detecção de câncer de mama inicial (2010-2019)'
+def statesCorplot(st_df):
+    st_df['avg_pop_log'] = np.log2(st_df['avg_population'])
+    st_df['mmg_coverage_50_69_ans_adj_max100'] = st_df['avg_mmg_coverage_50_69_ans_adj']
+    st_df['mmg_coverage_40_49_ans_adj_max100'] = st_df['avg_mmg_coverage_40_49_ans_adj']
+    st_df['mmg_coverage_50_69_ans_adj_max100'][st_df['mmg_coverage_50_69_ans_adj_max100']>100] = 100
+    st_df['mmg_coverage_40_49_ans_adj_max100'][st_df['mmg_coverage_40_49_ans_adj_max100']>100] = 100
+    fig1 = px.scatter(st_df, x='mmg_coverage_50_69_ans_adj_max100', y='ebc_det_ratio_50_69', color='avg_pop_log', width=450, height=450,
+                        trendline='ols', template='plotly', title='State coverge vs EBC detection (50-70 years)',
+                        labels={'ebc_det_ratio_50_69': 'EBC detection (%)', 'mmg_coverage_50_69_ans_adj_max100': 'Coverage (%)', 'avg_population': 'Population (log2)'})
 
-        ct_df['avg_population'] = np.log2(ct_df['avg_population'])
-        fig = px.scatter(ct_df, x="mmg_coverage_50_69_ans_adj_max100", y="ebc_det_ratio_50_69", color="total_number_mmg_50_69", height=600,
-                            trendline="ols", template="plotly", title=title,
-                            labels={'ratio': 'Detecção de câncer de mama inicial(%)', 'mmg_coverage_50_69_ans_adj_max100': 'Cobertura Mamográfica(%)', 'avg_population': 'População (log2)'})
+    fig2 = px.scatter(st_df, x='mmg_coverage_40_49_ans_adj_max100', y='ebc_det_ratio_40_49', color='avg_pop_log', width=450, height=450,
+                        title='State coverge vs EBC detection (40-50 years)',
+                        trendline='ols', template='plotly', labels={'ebc_det_ratio_40_49': 'EBC detection (%)', 'mmg_coverage_40_49_ans_adj_max100': ' Coverage(%)', 'avg_population': 'Population (log2)'})
 
-        fig2 = px.scatter(ct_df, x="mmg_coverage_40_49_ans_adj_max100", y="ebc_det_ratio_40_49", color="total_number_mmg_40_49", height=600,
-                            title=title,
-                            trendline="ols", template="plotly", labels={'ebc_det_ratio_40_49': 'Detecção de câncer de mama inicial(%)', 'mmg_coverage_40_49_ans_adj_max100': 'Cobertura Mamográfica(%)', 'mmg_40_total': 'Total de Mamografias'})
+    return [fig1, fig2]
 
-        map1.plotly_chart(fig)
-        map2.plotly_chart(fig2)
+def countiesCorplot(ct_df):
+    ct_df['avg_pop_log'] = np.log2(ct_df['avg_population'])
+    ct_df = ct_df[ct_df['total_number_breast_cases_40_49'] + ct_df['total_number_breast_cases_50_69'] > 30]
+    fig1 = px.scatter(ct_df, x='mmg_coverage_50_69_ans_adj_max100', y='ebc_det_ratio_50_69', color='avg_pop_log', width=500, height=500,
+                        trendline='ols', template='plotly', title='Municipalities coverge vs EBC detection (50-70 years)',
+                        labels={'ebc_det_ratio_50_69': 'EBC detection(%)', 'mmg_coverage_50_69_ans_adj_max100': 'Coverage(%)', 'avg_population': 'Population (log2)'})
 
-        col, col1, col2 = st.columns((2, 4, 6))
-        with col:
-            st.write('')
+    fig2 = px.scatter(ct_df, x='mmg_coverage_40_49_ans_adj_max100', y='ebc_det_ratio_40_49', color='avg_pop_log', width=500, height=500,
+                        title='Municipality coverge vs EBC detection (40-50 years)',
+                        trendline='ols', template='plotly', labels={'ebc_det_ratio_40_49': 'EBC detection(%)', 'mmg_coverage_40_49_ans_adj_max100': 'Coverage (%)', 'avg_population': 'Population (log2)'})
 
-        with col1:
-            print(st_df['avg_mmg_coverage_50_69_ans_adj'], st_df['avg_mmg_coverage_40_49_ans_adj'])
-            st.metric(label="Cobertura Mamográfica - 50 a 70 anos (2010-2019)", value=str(
-                st_df['avg_mmg_coverage_50_69_ans_adj'].values[0]) + "%")
-
-            st.metric(label="Cobertura Mamográfica - 40 a 50 anos (2010-2019)", value=str(
-                st_df['avg_mmg_coverage_40_49_ans_adj'].values[0]) + "%")
-
-        with col2:
-            st.metric(label="Taxa de Identificação de Câncer de Mama Inicial - 50 a 70 anos (2010-2019)", value=str(
-                st_df['ebc_det_ratio_50_69'].values[0]) + "%")
-
-            st.metric(label="Taxa de Identificação de Câncer de Mama Inicial - 40 a 50 anos (2010-2019)", value=str(
-                st_df['ebc_det_ratio_40_49'].values[0]) + "%")
+    return [fig1, fig2]
 
 
 def load_state_csv(st_df):

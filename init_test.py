@@ -19,8 +19,9 @@ states, counties = LoadFiles(['_geojson/brstates.geojson', '_geojson/br_mun_all.
 st_df, ct_df = LoadFiles(['csv/Supplemental_table_states_data.csv', 'csv/Supplemental_table_municipality_data.csv']).loadcsv()
 
 ## Filt columns
-st_df = st_df[['ibge_uf_id','uf', 'avg_mmg_coverage_50_69_ans_adj','avg_mmg_coverage_40_49_ans_adj','ebc_det_ratio_50_69','ebc_det_ratio_40_49', 'avg_population']]
-ct_df = ct_df[['uf', 'name_uf', 'ibge_munic_id', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'mmg_coverage_40_49_ans_adj_max100', 'ebc_det_ratio_50_69', 'ebc_det_ratio_40_49', 'total_number_mmg_50_69', 'total_number_mmg_40_49', 'avg_population']]
+st_df = st_df[['ibge_uf_id','uf', 'avg_mmg_coverage_50_69_ans_adj','avg_mmg_coverage_40_49_ans_adj','ebc_det_ratio_50_69','ebc_det_ratio_40_49', 'avg_population','avg_pop_50_69_ans_adj', 'avg_pop_40_49_ans_adj']]
+ct_df = ct_df[['uf', 'name_uf', 'ibge_munic_id', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'mmg_coverage_40_49_ans_adj_max100', 'ebc_det_ratio_50_69', 'ebc_det_ratio_40_49', 'total_number_mmg_50_69', 'total_number_mmg_40_49', 'avg_population','avg_pop_50_69_ans_adj', 'avg_pop_40_49_ans_adj','total_number_breast_cases_50_69', 'total_number_breast_cases_40_49']]
+print(ct_df.columns)
 
 figBr1 = plotmapCounties(ct_df, counties, ctitle='Mean mammogram coverage from 2010 to 2019 (50-70 years)', colname='mmg_coverage_50_69_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_50_69_ans_adj_max100', 'ebc_det_ratio_50_69'])
 figBr2 = plotmapCounties(ct_df, counties, ctitle='Mean mammogram coverage from 2010 to 2019 (40-50 years)', colname='mmg_coverage_40_49_ans_adj_max100', chover=['uf', 'name_munic', 'mmg_coverage_40_49_ans_adj_max100', 'ebc_det_ratio_40_49'], age=40)
@@ -28,10 +29,15 @@ divBr1 = figBr1.to_html(full_html=False)
 divBr2 = figBr2.to_html(full_html=False)
 
 
-
 @app.route('/')
 def index():
-    return render_template('/index.html', figure = [divBr1, divBr2])
+    barp = load_home_graph(st_df)
+    div = barp.to_html(full_html=False)
+    return render_template('/index.html', figure = [div])
+
+@app.route('/mapscov')
+def mapscov():
+    return render_template('/mapscov.html', figure = [divBr1, divBr2])
 
 @app.route('/brstmaps')
 def brmaps():
@@ -60,6 +66,16 @@ def stmaps():
     div1 = fig1.to_html(full_html=False)
     div2 = fig2.to_html(full_html=False)
     return render_template('/stmaps.html', figure = [div1, div2], uf_name = uf_name)
+
+@app.route('/corplots', methods=['GET', 'POST'])
+def corplots():
+    cor_st = statesCorplot(st_df)
+    cor_ct = countiesCorplot(ct_df)
+    div1 = cor_st[0].to_html(full_html=False)
+    div3 = cor_ct[0].to_html(full_html=False)
+    div2 = cor_st[1].to_html(full_html=False)
+    div4 = cor_ct[1].to_html(full_html=False)
+    return render_template('/corplots.html', figure = [(div1, div3),(div2, div4)])
 
 @app.route('/aboutProject')
 def about():
