@@ -44,7 +44,6 @@ divBr1 = figBr1.to_html(full_html=False)
 divBr2 = figBr2.to_html(full_html=False)
 
 @app.route('/')
-@cache.cached(timeout=50)
 def index():
     barp = load_home_graph(st_df)
     div = barp.to_html(full_html=False)
@@ -56,7 +55,6 @@ def mapscov():
     return render_template('/mapscov.html', figure = [divBr1, divBr2])
 
 @app.route('/brstmaps')
-@cache.cached(timeout=50)
 def brmaps():
     figBrSt1 = plotmapStates(st_df, states, ctitle='Mammogram coverage 2010-2019 (50-0 years)', colname='avg_mmg_coverage_50_69_ans_adj', chover=['uf', 'avg_mmg_coverage_50_69_ans_adj', 'ebc_det_ratio_50_69'])
     figBrSt2 = plotmapStates(st_df, states, ctitle='Mammogram coverage 2010-2019 (40-50 years)', colname='avg_mmg_coverage_40_49_ans_adj', chover=['uf', 'avg_mmg_coverage_50_69_ans_adj', 'ebc_det_ratio_40_49'])
@@ -65,7 +63,6 @@ def brmaps():
     return render_template('/brstmaps.html', figure = [divBrSt1, divBrSt2])
 
 @app.route('/stmaps', methods=['GET', 'POST'])
-@cache.cached(timeout=50)
 def stmaps():
     if request.method == 'POST':
         uf = request.form.get('state')
@@ -86,11 +83,14 @@ def stmaps():
     return render_template('/stmaps.html', figure = [div1, div2], uf_name = uf_name)
 
 @app.route('/corplots', methods=['GET', 'POST'])
-@cache.cached(timeout=50)
 def corplots():
     cor_st = statesCorplot(st_df)
     cor_ct = countiesCorplot(ct_df)
-    return render_template('/corplots.html', figure = [cor_st, cor_ct])
+    div1 = cor_st[0].to_html(full_html=False)
+    div3 = cor_ct[0].to_html(full_html=False)
+    div2 = cor_st[1].to_html(full_html=False)
+    div4 = cor_ct[1].to_html(full_html=False)
+    return render_template('/corplots.html', figure = [(div1, div3),(div2, div4)])
 
 @app.route('/aboutProject')
 def about():
